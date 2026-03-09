@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact ♡ Ayma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Libre+Baskerville:ital@1&family=Caveat:wght@400;600&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ══ VARIABLES ══ */
+        :root {
+            --rose-deep: #c73b7e;
+            --rose-mid: #e05c98;
+            --rose-soft: #f4a7c3;
+            --rose-pale: #fde8f2;
+            --rose-blush: #fff0f7;
+            --nude: #f9e8ee;
+            --text-dark: #3a1a2c;
+            --text-mid: #7a3a5a;
+            --gold: #d4a574;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ══ CURSEUR CŒUR ══ */
+        body {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23e05c98' d='M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z'/%3E%3C/svg%3E") 12 12, auto;
+            min-height: 100vh;
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--rose-blush);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ══ FOND MAILLAGE GRADIENT ══ */
+        .bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(ellipse 80% 60% at 10% 20%, rgba(244, 167, 195, 0.45) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 90% 80%, rgba(199, 59, 126, 0.18) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 50% at 50% 100%, rgba(253, 232, 242, 0.9) 0%, transparent 70%),
+                linear-gradient(160deg, #fff0f7 0%, #fde0ee 40%, #f9e0f0 70%, #ffe8f4 100%);
+        }
+
+        /* Grain texture overlay */
+        .bg-mesh::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* ══ PÉTALES FLOTTANTS ══ */
+        .petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            top: -60px;
+            font-size: 1.4rem;
+            animation: fall linear infinite;
+            opacity: 0;
+            filter: blur(0.3px);
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-60px) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(540deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* Générer 14 pétales avec des positions/durées variées */
+        .petal:nth-child(1) {
+            left: 5%;
+            animation-duration: 9s;
+            animation-delay: 0s;
+            font-size: 1rem;
+        }
+
+        .petal:nth-child(2) {
+            left: 12%;
+            animation-duration: 12s;
+            animation-delay: 1.5s;
+            font-size: 1.6rem;
+        }
+
+        .petal:nth-child(3) {
+            left: 22%;
+            animation-duration: 8s;
+            animation-delay: 3s;
+            font-size: 0.9rem;
+        }
+
+        .petal:nth-child(4) {
+            left: 35%;
+            animation-duration: 14s;
+            animation-delay: 0.8s;
+            font-size: 1.3rem;
+        }
+
+        .petal:nth-child(5) {
+            left: 47%;
+            animation-duration: 10s;
+            animation-delay: 4s;
+            font-size: 1rem;
+        }
+
+        .petal:nth-child(6) {
+            left: 58%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+            font-size: 1.5rem;
+        }
+
+        .petal:nth-child(7) {
+            left: 68%;
+            animation-duration: 7s;
+            animation-delay: 0.5s;
+            font-size: 0.8rem;
+        }
+
+        .petal:nth-child(8) {
+            left: 77%;
+            animation-duration: 13s;
+            animation-delay: 5s;
+            font-size: 1.2rem;
+        }
+
+        .petal:nth-child(9) {
+            left: 85%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+            font-size: 1.4rem;
+        }
+
+        .petal:nth-child(10) {
+            left: 93%;
+            animation-duration: 11s;
+            animation-delay: 3.5s;
+            font-size: 1rem;
+        }
+
+        .petal:nth-child(11) {
+            left: 18%;
+            animation-duration: 16s;
+            animation-delay: 6s;
+            font-size: 0.85rem;
+        }
+
+        .petal:nth-child(12) {
+            left: 62%;
+            animation-duration: 8s;
+            animation-delay: 2.5s;
+            font-size: 1.6rem;
+        }
+
+        .petal:nth-child(13) {
+            left: 40%;
+            animation-duration: 12s;
+            animation-delay: 7s;
+            font-size: 0.9rem;
+        }
+
+        .petal:nth-child(14) {
+            left: 55%;
+            animation-duration: 9s;
+            animation-delay: 4.5s;
+            font-size: 1.1rem;
+        }
+
+        /* ══ NAV ══ */
+        .header {
+            padding: 22px 5%;
+            display: flex;
+            justify-content: flex-end;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: rgba(255, 240, 247, 0.55);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(244, 167, 195, 0.2);
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav a {
+            color: var(--text-mid);
+            text-decoration: none;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rose-deep), var(--rose-soft));
+            border-radius: 2px;
+            transition: width 0.35s ease;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            color: var(--rose-deep);
+        }
+
+        .nav a:hover::after,
+        .nav a.active::after {
+            width: 100%;
+        }
+
+        /* ══ CONTAINER PRINCIPAL ══ */
+        .contact-container {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 5% 80px;
+            position: relative;
+        }
+
+        /* ══ TITRE PRINCIPAL ══ */
+        .contact-eyebrow {
+            font-family: 'Caveat', cursive;
+            font-size: 1.15rem;
+            color: var(--rose-mid);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .contact-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(5rem, 12vw, 9rem);
+            background: linear-gradient(135deg, var(--rose-deep) 0%, #e8739e 45%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 4px 12px rgba(199, 59, 126, 0.2));
+            opacity: 0;
+            animation: fadeUp 0.9s ease 0.35s forwards;
+        }
+
+        .contact-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text-mid);
+            max-width: 540px;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease 0.5s forwards;
+        }
+
+        /* ══ CARTE CONTACT — LETTRE GLAMOUR ══ */
+        .contact-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 32px;
+            padding: 56px 70px;
+            max-width: 620px;
+            width: 100%;
+            box-shadow:
+                0 8px 32px rgba(199, 59, 126, 0.1),
+                0 32px 80px rgba(199, 59, 126, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            opacity: 0;
+            animation: fadeUp 1s ease 0.65s forwards;
+        }
+
+        /* Ligne dorée décorative en haut */
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--rose-soft), var(--gold), transparent);
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* Petit motif floral coin */
+        .contact-card::after {
+            content: '✿';
+            position: absolute;
+            bottom: 20px;
+            right: 28px;
+            font-size: 1.4rem;
+            color: var(--rose-soft);
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        /* Séparateur élégant */
+        .card-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--rose-mid), transparent);
+            margin: 0 auto 40px;
+        }
+
+        /* ══ LIGNES DE CONTACT ══ */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            padding: 20px 24px;
+            border-radius: 18px;
+            margin-bottom: 14px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 240, 247, 0.4);
+            border: 1px solid rgba(244, 167, 195, 0.2);
+            cursor: pointer;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 240, 247, 0.7), rgba(244, 167, 195, 0.15));
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            border-radius: 18px;
+        }
+
+        .contact-item:hover {
+            transform: translateX(6px) scale(1.01);
+            box-shadow: 0 8px 30px rgba(199, 59, 126, 0.15);
+            border-color: rgba(244, 167, 195, 0.5);
+        }
+
+        .contact-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Icône bulle */
+        .item-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose-deep), var(--rose-mid));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            box-shadow: 0 6px 18px rgba(199, 59, 126, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item:hover .item-icon {
+            transform: rotate(-8deg) scale(1.1);
+            box-shadow: 0 10px 28px rgba(199, 59, 126, 0.4);
+        }
+
+        .item-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .item-label {
+            font-family: 'Caveat', cursive;
+            font-size: 0.9rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--rose-mid);
+            display: block;
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+
+        .item-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        /* Flèche discrète */
+        .item-arrow {
+            color: var(--rose-soft);
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: opacity 0.3s, transform 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item:hover .item-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ══ SIGNATURE BAS DE PAGE ══ */
+        .contact-sign {
+            margin-top: 50px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeUp 1s ease 1s forwards;
+        }
+
+        .sign-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--rose-deep);
+            opacity: 0.7;
+            line-height: 1;
+        }
+
+        .sign-detail {
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            color: var(--rose-soft);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* ══ DÉCORS FLOTTANTS ══ */
+        .deco {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0;
+            animation: floatDeco ease-in-out infinite;
+        }
+
+        @keyframes floatDeco {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(var(--r, 0deg));
+                opacity: var(--op, 0.5);
+            }
+
+            50% {
+                transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 8deg));
+                opacity: calc(var(--op, 0.5) * 0.8);
+            }
+        }
+
+        .deco-1 {
+            top: 18%;
+            left: 4%;
+            font-size: 4rem;
+            --r: -15deg;
+            --op: 0.4;
+            animation-duration: 6s;
+            animation-delay: 0s;
+            animation-fill-mode: forwards;
+        }
+
+        .deco-2 {
+            top: 30%;
+            right: 5%;
+            font-size: 3rem;
+            --r: 12deg;
+            --op: 0.35;
+            animation-duration: 7.5s;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        .deco-3 {
+            bottom: 20%;
+            left: 7%;
+            font-size: 2.5rem;
+            --r: -8deg;
+            --op: 0.45;
+            animation-duration: 8s;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
+
+        .deco-4 {
+            bottom: 30%;
+            right: 8%;
+            font-size: 5rem;
+            --r: 20deg;
+            --op: 0.3;
+            animation-duration: 5.5s;
+            animation-delay: 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        .deco-5 {
+            top: 60%;
+            left: 2%;
+            font-size: 2rem;
+            --r: 5deg;
+            --op: 0.3;
+            animation-duration: 9s;
+            animation-delay: 3s;
+            animation-fill-mode: forwards;
+        }
+
+        /* ══ ANIMATIONS ENTRÉE ══ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ══ RESPONSIVE ══ */
+        @media (max-width: 640px) {
+            .contact-card {
+                padding: 38px 28px;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .nav a {
+                font-size: 1.2rem;
+            }
+
+            .deco {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Fond dégradé -->
+    <div class="bg-mesh"></div>
+
+    <!-- Pétales flottants -->
+    <div class="petals" aria-hidden="true">
+        <span class="petal">🌸</span>
+        <span class="petal">💗</span>
+        <span class="petal">🌸</span>
+        <span class="petal">✿</span>
+        <span class="petal">💗</span>
+        <span class="petal">🌸</span>
+        <span class="petal">💮</span>
+        <span class="petal">💗</span>
+        <span class="petal">🌸</span>
+        <span class="petal">✿</span>
+        <span class="petal">💗</span>
+        <span class="petal">🌸</span>
+        <span class="petal">💮</span>
+        <span class="petal">💗</span>
+    </div>
+
+    <!-- Décors latéraux -->
+    <div class="deco deco-1" aria-hidden="true">💐</div>
+    <div class="deco deco-2" aria-hidden="true">🎀</div>
+    <div class="deco deco-3" aria-hidden="true">✨</div>
+    <div class="deco deco-4" aria-hidden="true">🌷</div>
+    <div class="deco deco-5" aria-hidden="true">💫</div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">À propos</a></li>
+                <li><a href="competences.html">Compétences</a></li>
+                <li><a href="cv.html">Mon CV</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu -->
+    <div class="contact-container">
+
+        <p class="contact-eyebrow">— Restons en contact —</p>
+
+        <h1 class="contact-title">Écrivez-moi ♡</h1>
+
+        <p class="contact-subtitle">
+            Envie de parler projets, collaborations ou simplement échanger des idées ?<br>
+            Je suis toujours là, avec le sourire et une tasse de latte art virtuel.
+        </p>
+
+        <!-- Carte principale -->
+        <div class="contact-card">
+            <div class="card-divider"></div>
+
+            <!-- Téléphone -->
+            <a href="tel:0767104762" class="contact-item">
+                <div class="item-icon">☎</div>
+                <div class="item-content">
+                    <span class="item-label">Téléphone</span>
+                    <span class="item-value">07 67 10 47 62</span>
+                </div>
+                <span class="item-arrow">→</span>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:aymamenyzel@gmail.com" class="contact-item">
+                <div class="item-icon">✉</div>
+                <div class="item-content">
+                    <span class="item-label">Email</span>
+                    <span class="item-value">aymamenyzel@gmail.com</span>
+                </div>
+                <span class="item-arrow">→</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/ayma-l8a92339" target="_blank" rel="noopener" class="contact-item">
+                <div class="item-icon">↗</div>
+                <div class="item-content">
+                    <span class="item-label">LinkedIn</span>
+                    <span class="item-value">linkedin.com/in/ayma</span>
+                </div>
+                <span class="item-arrow">→</span>
+            </a>
+
+        </div>
+
+        <!-- Signature -->
+        <div class="contact-sign">
+            <div class="sign-text">Ayma ♡</div>
+            <div class="sign-detail">avec amour &amp; créativité</div>
+        </div>
+
+    </div>
+
+    <script>
+        // Activer les décos flottantes après chargement
+        document.querySelectorAll('.deco').forEach((el, i) => {
+            setTimeout(() => { el.style.opacity = ''; }, 800 + i * 150);
+        });
+
+        // Effet ripple rose au clic sur les items
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height) * 2;
+                ripple.style.cssText = `
+                    position:absolute; border-radius:50%;
+                    width:${size}px; height:${size}px;
+                    left:${e.clientX - rect.left - size / 2}px;
+                    top:${e.clientY - rect.top - size / 2}px;
+                    background:rgba(244,167,195,0.3);
+                    transform:scale(0); pointer-events:none;
+                    animation:ripple 0.55s ease-out forwards;
+                `;
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Injecter keyframe ripple
+        const style = document.createElement('style');
+        style.textContent = `@keyframes ripple { to { transform:scale(1); opacity:0; } }`;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+
+</html>

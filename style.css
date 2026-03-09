@@ -1,0 +1,609 @@
+/* ==========================================================================
+   1. RESET & BASE
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fff0f5 0%, #fdf4f8 50%, #ffeef5 100%);
+    color: #2d1a26;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    /* Curseur heart girly – optionnel, commente si tu veux le désactiver */
+    cursor: url('https://i.etsystatic.com/47212349/r/il/903231/6121620678/il_fullxfull.6121620678_9iwy.png'), auto;
+}
+
+/* Fond décoratif subtil (étoiles + sparkles) */
+.stars,
+.sparkles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.stars {
+    background: url('https://www.transparenttextures.com/patterns/sparkles.png');
+    opacity: 0.07;
+}
+
+.sparkles {
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.12) 0%, transparent 30%);
+    animation: twinkle 12s infinite alternate;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION (commun à toutes les pages)
+   ========================================================================== */
+
+.header {
+    padding: 25px 5%;
+    background: rgba(255, 245, 247, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #ffe4e9;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #ff85a2;
+    letter-spacing: 1px;
+}
+
+.nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #4a2c3f;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav a:hover,
+.nav a.active {
+    color: #ff85a2;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background: #ffb6c1;
+    transition: width 0.35s ease;
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   3. POLAROIDS & ÉLÉMENTS SCRAPBOOK (communs)
+   ========================================================================== */
+
+.polaroid {
+    background: white;
+    padding: 12px 12px 28px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    position: relative;
+    border: 1px solid #ffe4e9;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 8px solid white;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.polaroid .caption {
+    text-align: center;
+    margin-top: 14px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.35rem;
+    color: #e066a3;
+}
+
+.polaroid:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 50px rgba(255, 105, 180, 0.35);
+}
+
+/* Scotch / tapes */
+.tape {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(transparent 10%, #fffacd 10%, #fffacd 90%, transparent 90%);
+    opacity: 0.7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tape-top-left {
+    top: -8px;
+    left: 15px;
+    transform: rotate(-15deg);
+}
+
+.tape-top-right {
+    top: -10px;
+    right: 20px;
+    transform: rotate(12deg);
+}
+
+.tape-left {
+    left: -18px;
+    top: 40%;
+    transform: rotate(80deg);
+}
+
+.tape-right {
+    right: -18px;
+    top: 55%;
+    transform: rotate(-75deg);
+}
+
+/* Washi tape horizontaux */
+.washi-deco {
+    position: absolute;
+    height: 40px;
+    background-size: contain;
+    background-repeat: repeat-x;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.washi-top {
+    top: -20px;
+    left: 0;
+    right: 0;
+    transform: rotate(2deg);
+}
+
+.washi-bottom {
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    transform: rotate(-1.5deg);
+}
+
+/* ==========================================================================
+   4. PAGE À PROPOS (scrapbook + photo accotée)
+   ========================================================================== */
+
+.scrapbook {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 5%;
+}
+
+.about-section {
+    background: #fffaf5;
+    padding: 60px 5%;
+    border-radius: 32px;
+    box-shadow: 0 15px 45px rgba(255, 182, 193, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-photo {
+    flex: 0 1 380px;
+    max-width: 380px;
+    z-index: 2;
+    margin: -40px 0;
+    /* chevauchement scrapbook */
+}
+
+.text-content {
+    flex: 1 1 500px;
+    min-width: 300px;
+    font-size: 1.18rem;
+    line-height: 1.8;
+    color: #3f2a38;
+}
+
+.text-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.6rem;
+    color: #d14f8c;
+    margin-bottom: 30px;
+}
+
+.intro {
+    font-size: 1.4rem;
+    margin-bottom: 1.6em;
+}
+
+.heart-line {
+    font-family: 'Caveat', cursive;
+    font-size: 2.4rem;
+    color: #ff85a2;
+    text-align: center;
+    margin: 60px 0 40px;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   5. PAGE CV (livre ouvert + timeline + bouton cadeau)
+   ========================================================================== */
+
+.cv-scrapbook {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 5%;
+    perspective: 1500px;
+}
+
+.cv-book {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    transform-style: preserve-3d;
+}
+
+.cv-page {
+    width: 50%;
+    max-width: 520px;
+    padding: 50px 40px;
+    background: #fffaf5;
+    box-shadow: 0 15px 45px rgba(255, 182, 193, 0.35);
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.left-page {
+    border-radius: 20px 0 40px 20px;
+    transform: rotateY(-8deg) translateX(20px);
+}
+
+.right-page {
+    border-radius: 0 20px 20px 40px;
+    transform: rotateY(8deg) translateX(-20px);
+    background: #fff5f9;
+}
+
+.book-spine {
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(#ffb6c1, #ff85a2);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.ribbon {
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(90deg, #ff85a2 0%, #ffb6c1 50%, #ff85a2 100%);
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg);
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    z-index: 3;
+}
+
+/* Profil CV */
+.profile-polaroid {
+    width: 180px;
+    margin: 0 auto 25px;
+}
+
+.profile-img {
+    border: 10px solid white;
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Timeline CV */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.entry {
+    position: relative;
+    padding-left: 80px;
+}
+
+.date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: #d14f8c;
+    width: 70px;
+    text-align: right;
+}
+
+.content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #e066a3;
+    margin-bottom: 8px;
+}
+
+.content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Images décoratives CV */
+.decor-scrapbook,
+.mini-polaroid {
+    width: 140px;
+    margin: 20px auto;
+    display: block;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    border: 1px solid #ffe4e9;
+    border-radius: 12px;
+}
+
+.left-decor {
+    margin-left: -40px;
+}
+
+/* Bouton cadeau CV */
+.btn-gift {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 50px auto 0;
+    padding: 20px 60px;
+    background: linear-gradient(135deg, #ff85a2, #ffb6c1);
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(255, 133, 162, 0.4);
+    transition: all 0.4s;
+    width: fit-content;
+}
+
+.btn-gift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(255, 105, 180, 0.55);
+}
+
+.gift-img {
+    width: 120px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-gift span {
+    font-size: 1.3rem;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+    .about-container,
+    .cv-book {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .main-photo,
+    .cv-page {
+        transform: rotate(-2deg) !important;
+        margin: 0;
+        width: 100%;
+        max-width: none;
+    }
+
+    .text-content h1,
+    .text-content {
+        text-align: center;
+    }
+
+    .nav ul {
+        gap: 25px;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .entry {
+        padding-left: 0;
+    }
+
+    .date {
+        position: static;
+        text-align: center;
+        margin-bottom: 10px;
+        width: auto;
+    }
+}
+
+/* ==========================================================================
+   7. FOOTER (commun)
+   ========================================================================== */
+
+footer {
+    text-align: center;
+    padding: 40px 0;
+    color: #c78ba5;
+    font-size: 0.95rem;
+    border-top: 1px dashed #ffe4e9;
+}
+
+.about-fullscreen {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 2% 2px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.about-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 60px;
+    width: 100%;
+    height: 85vh;
+    max-height: 85vh;
+}
+
+.photo-side {
+    flex: 0 0 38%;
+    max-width: 38%;
+    display: flex;
+    align-items: center;
+}
+
+.photo-side .polaroid {
+    width: 100%;
+    height: 100%;
+    max-height: 85vh;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.photo-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.text-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px 0 0;
+}
+
+.text-side h1 {
+    font-size: 4.2rem;
+    margin-bottom: 20px;
+    color: #d14f8c;
+}
+
+.text-side p {
+    font-size: 1.28rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+
+.heart-line {
+    font-family: 'Caveat', cursive;
+    font-size: 2.4rem;
+    color: #ff85a2;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+    .about-fullscreen {
+        min-height: auto;
+        padding: 60px 5% 80px;
+    }
+
+    .about-layout {
+        flex-direction: column;
+        gap: 40px;
+        height: auto;
+    }
+
+    .photo-side {
+        flex: 0 0 auto;
+        max-width: 85%;
+        margin: 0 auto;
+    }
+
+    .photo-side .polaroid {
+        max-height: 65vh;
+    }
+
+    .text-side {
+        text-align: center;
+        padding: 0;
+    }
+
+    .text-side h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Bouton téléchargement décalé à gauche sur la page CV */
+.cv-download-left {
+    text-align: left;
+    margin: 60px 0 0 0;
+    /* Espacement au-dessus + collé à gauche */
+}
+
+.cv-download-left .btn-gift {
+    display: inline-block;
+    /* pour qu'il ne prenne pas toute la largeur */
+}
